@@ -1,18 +1,19 @@
-package com.app.configure;
+package com.token.configure;
 
-import com.app.PassportFilter;
-import org.apache.commons.lang3.StringUtils;
+import java.io.IOException;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
+
+import com.token.PassportFilter;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Created by Administrator on 2018/5/31.
  */
 public class LogoutProcessor extends PassportFilter {
     
-    private static final String TOKEN_KEY = "com/app";
+    private static final String TOKEN_KEY = "token";
     
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

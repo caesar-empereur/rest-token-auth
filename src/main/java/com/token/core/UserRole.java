@@ -1,4 +1,4 @@
-package com.app.core;
+package com.token.core;
 
 /**
  * 简单的用户权限分类

@@ -1,4 +1,4 @@
-package com.app.core;
+package com.token.core;
 
 import java.io.Serializable;
 

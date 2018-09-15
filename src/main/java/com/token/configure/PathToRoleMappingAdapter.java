@@ -1,14 +1,16 @@
-package com.app.configure;
+package com.token.configure;
 
-import com.app.core.AuthorizationStrategy;
-import com.app.core.PathToRoleMatcher;
-import com.app.core.User;
-import com.app.core.UserRole;
-import com.app.exception.ParameterException;
-import org.springframework.util.CollectionUtils;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Set;
+
+import com.token.core.PathToRoleMatcher;
+import com.token.core.UserRole;
+import com.token.core.AuthorizationStrategy;
+import org.springframework.util.CollectionUtils;
+
+import com.token.core.User;
+import com.token.exception.ParameterException;
 
 /**
  * Created by Administrator on 2018/5/28.
@@ -23,16 +25,15 @@ public class PathToRoleMappingAdapter {
         }
         this.pathToRoleMatchers = pathToRoleMatchers;
     }
-
+    
     public Set<PathToRoleMatcher> getPathToRoleMatchers() {
         return pathToRoleMatchers;
     }
-
-    /*
-            根据请求对象匹配用户角色，决定在过滤器中是否通过
-         */
-    public AuthorizationStrategy filterPassing(HttpServletRequest request,
-                                               User user) {
+    
+    /**
+     * 根据请求对象匹配用户角色，决定在过滤器中是否通过
+     */
+    public AuthorizationStrategy filterPassing(HttpServletRequest request, User user) {
         if (user.getRole() == UserRole.ADMIN) {
             return AuthorizationStrategy.EXCEED;
         }

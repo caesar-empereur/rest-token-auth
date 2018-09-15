@@ -1,15 +1,16 @@
-package com.app.configure;
+package com.token.configure;
 
-import com.app.exception.ParameterException;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+
+import com.token.exception.ParameterException;
 
 /**
  * Created by Administrator on 2018/6/2.

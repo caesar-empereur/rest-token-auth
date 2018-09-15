@@ -1,4 +1,4 @@
-package com.app.core;
+package com.token.core;
 
 /**
  * Created by Administrator on 2018/5/28.

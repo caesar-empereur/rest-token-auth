@@ -55,9 +55,12 @@ shiro, spring-security 需要配置权限认证错误的跳转页面,需要客�
   
   auth 模块的正常使用需要这 3 个接口有实现类，就是把具体的逻辑交给使用者去实现
 ```
-    
+* springboot启动类配置 
+```
+@ComponentScan({ "com.app", "com.token" })
+除了自己模块的包名外，还要加上auth 模块的包 扫描
+```
 ### 4 权限过滤流程
-
 * 用户表单登录,参数为用户名,密码,登录成功则返回 token，失败则看具体信息
 * 登录成功后请求 资源受保护的接口时,需要把 token 放到请求的 header 中, key 为 "token"，value 就是token的值
 * 权限认证成功则可以进入到 controller, 失败则返回 http 状态码 401, 表示未授权

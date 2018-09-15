@@ -1,4 +1,4 @@
-package com.app.core;
+package com.token.core;
 
 /**
  * 过滤器权限检查结果

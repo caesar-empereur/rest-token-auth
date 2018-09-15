@@ -1,11 +1,14 @@
-package com.app.annotion;
+package com.token.annotion;
 
-import com.app.AuthorizationFilter;
-import com.app.PassportFilter;
-import com.app.configure.PassportEndpointMatcher;
-import com.app.configure.PassportEndpointMatcherAdapter;
-import com.app.configure.PathToRoleMappingAdapter;
-import com.app.core.PathToRoleMatcher;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import com.token.AuthorizationFilter;
+import com.token.PassportFilter;
+import com.token.configure.PassportEndpointMatcherAdapter;
+import com.token.configure.PathToRoleMappingAdapter;
+import com.token.core.PathToRoleMatcher;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -18,18 +21,16 @@ import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.util.Assert;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import com.token.configure.PassportEndpointMatcher;
 
 /**
  * Created by pc on 2018/4/2.
  */
 @Configuration
+@Slf4j
 public class TokenInitialization implements ImportBeanDefinitionRegistrar, WebMvcConfigurer {
     
     protected AnnotationAttributes enableToken;
-    
-    private static final Log log = LogFactory.getLog(TokenInitialization.class);
     
     @Override
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata,
@@ -71,4 +72,7 @@ public class TokenInitialization implements ImportBeanDefinitionRegistrar, WebMv
         registrationBean.setUrlPatterns(urlPatterns);
         return registrationBean;
     }
+
+//    @Bean
+//    public FilterRegistrationBean authorizationFilter()
 }

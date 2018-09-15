@@ -1,4 +1,4 @@
-package com.app.exception;
+package com.token.exception;
 
 public class TokenInvalidException extends RuntimeException {
     

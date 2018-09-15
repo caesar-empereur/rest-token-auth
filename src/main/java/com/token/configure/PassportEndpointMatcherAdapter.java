@@ -1,4 +1,4 @@
-package com.app.configure;
+package com.token.configure;
 
 import java.util.Set;
 

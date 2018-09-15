@@ -1,18 +1,20 @@
-package com.app.configure;
+package com.token.configure;
 
-import com.app.PassportFilter;
-import com.app.core.User;
-import com.app.exception.ParameterException;
-import com.app.exception.TokenInvalidException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang3.StringUtils;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.UUID;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.UUID;
+
+import com.token.PassportFilter;
+import com.token.core.User;
+import com.token.exception.TokenInvalidException;
+import com.token.exception.ParameterException;
+import org.apache.commons.lang3.StringUtils;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Created by Administrator on 2018/5/29.
@@ -35,7 +37,7 @@ public class LoginProcessor extends PassportFilter {
         
     }
 
-    /*
+    /**
         这里起到controller 的作用, 拦截用户的登陆请求,
         然后直接修改 response 生成登陆结果, 过滤器不用过
      */
@@ -70,7 +72,7 @@ public class LoginProcessor extends PassportFilter {
         
         public LoginResponse(boolean succeed, String token) {
             put("succeed", succeed);
-            put("com/app", token);
+            put("token", token);
         }
     }
 }

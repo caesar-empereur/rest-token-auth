@@ -1,24 +1,24 @@
-package com.app;
+package com.token;
 
-import com.app.configure.LoginProcessor;
-import com.app.configure.LogoutProcessor;
-import com.app.configure.PassportEndpointMatcher;
-import com.app.configure.PassportFilterContext;
-import com.app.core.PasswordEncode;
-import com.app.core.TokenProvider;
-import com.app.core.UserProvider;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
+import java.io.IOException;
+import java.util.Set;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.Set;
+
+import com.token.configure.LogoutProcessor;
+import com.token.configure.PassportFilterContext;
+import com.token.core.PasswordEncode;
+import com.token.configure.LoginProcessor;
+import com.token.core.UserProvider;
+import com.token.configure.PassportEndpointMatcher;
+import com.token.core.TokenProvider;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 /**
  * Created by Administrator on 2018/6/2.
- * <p>
  * 本类是处理登入登出操作的总入口，因此称为通行证 登入登出操作都是基于过滤器的
  */
 public class PassportFilter implements Filter {
@@ -29,7 +29,9 @@ public class PassportFilter implements Filter {
     
     protected static PasswordEncode passwordEncode;
     
-    // 策略模式的上下文
+    /**
+     * 策略模式的上下文
+     */
     private PassportFilterContext filterContext = new PassportFilterContext();
     
     private Set<PassportEndpointMatcher> endpointMatchers;

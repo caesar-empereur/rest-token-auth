@@ -1,30 +1,31 @@
-package com.app;
+package com.token;
 
-import com.app.configure.PathToRoleMappingAdapter;
-import com.app.core.AuthorizationStrategy;
-import com.app.core.TokenProvider;
-import com.app.core.User;
-import com.app.exception.ParameterException;
-import com.app.exception.TokenInvalidException;
-import com.app.exception.TokenNullException;
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.schedulers.Schedulers;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.http.HttpStatus;
+import java.io.IOException;
 
 import javax.servlet.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+
+import com.token.configure.PathToRoleMappingAdapter;
+import com.token.core.AuthorizationStrategy;
+import com.token.core.User;
+import com.token.exception.TokenInvalidException;
+import com.token.exception.TokenNullException;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.util.Assert;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by pc on 2018/3/23.
  */
-public class AuthorizationFilter implements Filter {
+public class AuthorizationFilter extends PassportFilter {
     
     private static final Log log = LogFactory.getLog(AuthorizationFilter.class);
     
@@ -34,12 +35,8 @@ public class AuthorizationFilter implements Filter {
     
     private PathToRoleMappingAdapter mappingAdapter;
     
-    private TokenProvider tokenProvider;
-    
     public AuthorizationFilter setMappingAdapter(PathToRoleMappingAdapter mappingAdapter) {
-        if (mappingAdapter == null) {
-            throw new ParameterException("PathToRoleMappingAdapter can not be null");
-        }
+        Assert.notNull(mappingAdapter, "PathToRoleMappingAdapter can not be null");
         this.mappingAdapter = mappingAdapter;
         return this;
     }
@@ -103,8 +100,8 @@ public class AuthorizationFilter implements Filter {
                       if (exception instanceof TokenInvalidException) {
                           throw new TokenInvalidException(exception.getMessage());
                       }
-                      throw new RuntimeException(exception);
+                      throw new RuntimeException(exception.getMessage());
                   });
     }
-
+    
 }

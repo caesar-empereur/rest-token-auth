@@ -1,4 +1,4 @@
-package com.app.configure;
+package com.token.configure;
 
 /**
  * Created by Administrator on 2018/6/2.

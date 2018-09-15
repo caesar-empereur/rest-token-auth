@@ -1,9 +1,9 @@
-package com.app;
-
-import com.app.core.User;
-import com.app.exception.ParameterException;
+package com.token;
 
 import javax.servlet.http.HttpServletRequest;
+
+import com.token.core.User;
+import com.token.exception.ParameterException;
 
 /**
  * Created by yang on 2018/5/20.

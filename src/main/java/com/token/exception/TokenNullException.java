@@ -1,4 +1,4 @@
-package com.app.exception;
+package com.token.exception;
 
 /**
  * Created by Administrator on 2018/5/31.
